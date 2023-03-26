@@ -110,9 +110,8 @@ def conferir(senha:str, lista:list) -> bool:
        return False
    else:
        return True
+#confere = conferir(senha, senhas)
 
-
-confere = conferir(senha, senhas)
 # print(confere)
 # tratar_user(user)
 # print(user)
