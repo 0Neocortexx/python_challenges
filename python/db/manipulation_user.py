@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
+import bcrypt
 
 app = Flask(__name__)
 app.app_context().push()
@@ -29,8 +30,22 @@ class Usuario(db.Model):
             "senha": self.senha
         }
 if __name__=="__main__":
-    # db.create_all()
+  def cadastrar_pessoa():
+      nome = str(input("NOME: "))
+      email = str(input("EMAIL:"))
+      senha = str(input("SENHA: "))
+      senha = cript(senha)
+      user = Usuario(nome = nome, email = email , senha = senha)
+      db.session.add(user)
+      db.session.commit()
+
+  def cript(senha):
+      senha = senha("utf-8")
+      senha = bcrypt.hashpw()
+      print(senha)
+  """  # db.create_all()
     usuario = Usuario(nome = "Alan", email= "Alan123@gmail.com", senha = "Alan123")
     print("ADICIONADO!")
     db.session.add(usuario)
-    db.session.commit()
+    db.session.commit()"""
+  cadastrar_pessoa()
